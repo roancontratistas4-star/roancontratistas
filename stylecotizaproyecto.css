@@ -142,7 +142,7 @@ header {
 /* --- SECCIÓN HERO CENTRADA --- */
 .page-header {
     margin-top: 83px; /* Espacio para que el header fijo no tape el título */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('imagenes/fondocivil.webp') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('fondocivil.webp') center/cover;
     height: 300px;
     display: flex;
     align-items: center;
@@ -239,4 +239,5 @@ form input, form textarea {
     .nav-links { 
         display: none; 
     }
+
 }
