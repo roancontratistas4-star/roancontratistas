@@ -1,0 +1,262 @@
+/* --- CONFIGURACIÓN DE LAYOUT --- */
+:root {
+    --primary-blue: #0a1a35;
+    --accent-red: #e31e24;
+    --lime-green: #e31e24; /* Verde Lima exacto de la referencia */
+    --white: #ffffff;
+    --text-dark: #333333;
+    --gray-bg: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- HERO SECCIÓN (Ajustada para Header Fixed) --- */
+.services-hero {
+    padding: 160px 0 60px; /* Espacio extra para que el header no tape el título */
+    background: var(--white);
+    text-align: left;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.services-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--primary-blue);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.highlight {
+    color: var(--text-dark); /* O el color que prefieras para resaltar */
+}
+
+/* --- ESTRUCTURA PRINCIPAL (SIDEBAR + GRID) --- */
+.main-services-wrapper {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 100px;
+    align-items: flex-start;
+}
+
+/* --- SIDEBAR (FILTROS) --- */
+.sidebar-filters {
+    flex: 0 0 280px;
+    position: sticky;
+    top: 120px; /* Se mantiene visible al hacer scroll */
+    background: var(--gray-bg);
+    padding: 30px 20px;
+    border-radius: 4px;
+}
+
+.sidebar-filters h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--primary-blue);
+    border-left: 5px solid var(--accent-red);
+    padding-left: 12px;
+    font-weight: 800;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-btn {
+    background: var(--white);
+    border: 1px solid #ddd;
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+.sidebar-contact-box {
+    margin-top: 30px;
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 25px 20px;
+    text-align: center;
+    border-bottom: 4px solid var(--lime-green);
+}
+
+.sidebar-contact-box i {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--lime-green);
+}
+
+/* --- GRID TÉCNICO DE SERVICIOS --- */
+.services-grid-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas para compensar el sidebar */
+    gap: 0; /* Sin espacio entre cards para el efecto de rejilla */
+    border: 6px solid var(--lime-green);
+    background: var(--lime-green); /* El fondo crea las líneas divisorias */
+}
+
+.service-card {
+    background: #34495e; /* Gris azulado oscuro de la referencia */
+    aspect-ratio: 1 / 0.9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    border: 1px solid var(--lime-green);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card.hide {
+    display: none;
+}
+
+/* --- CORRECCIÓN DE ENLACES EN CARDS --- */
+.card-link {
+    display: block; /* Importante para que ocupe todo el div */
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Asegura que la imagen dentro del link se comporte bien */
+.card-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.6s ease;
+}
+
+/* El overlay debe estar dentro del link para que sea clickeable */
+.img-card .img-overlay {
+    z-index: 2;
+    pointer-events: none; /* Permite que el click pase al link */
+}
+
+/* Corregir hover a través del link */
+.service-card:hover .card-link img {
+    transform: scale(1.1);
+}
+
+.card-inner i {
+    font-size: 3.5rem;
+    color: var(--white);
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.card-inner h3 {
+    font-size: 0.9rem;
+    color: var(--white);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+}
+
+/* --- TARJETAS CON IMAGEN --- */
+.img-card {
+    padding: 0;
+}
+
+.img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s ease;
+}
+
+.img-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    text-align: center;
+}
+
+.img-overlay h3 {
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+    margin: 0;
+    font-weight: 800;
+}
+
+/* --- HOVERS --- */
+.service-card:not(.img-card):hover {
+    background: var(--primary-blue);
+}
+
+.service-card:hover .card-inner i {
+    transform: scale(1.1);
+    color: var(--lime-green);
+}
+
+.img-card:hover img {
+    transform: scale(1.1);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .main-services-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar-filters {
+        width: 100%;
+        position: static;
+        margin-bottom: 20px;
+    }
+
+    .filter-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        flex: 1 1 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid-container {
+        grid-template-columns: 1fr;
+    }
+}

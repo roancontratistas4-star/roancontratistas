@@ -1,0 +1,242 @@
+/* --- CONFIGURACIÓN DE VARIABLES ROAN --- */
+:root {
+    --primary-blue: #0a1a35;
+    --accent-red: #e31e24;
+    --accent-yellow: #e31e24;
+    --white: #ffffff;
+    --text-dark: #333333;
+    --text-gray: #666;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    font-family: 'Montserrat', sans-serif; 
+    color: var(--text-dark); 
+    background: #fdfdfd; 
+}
+
+/* CENTRADO GLOBAL DEL CONTENIDO */
+.container { 
+    max-width: 1200px; 
+    margin-left: auto !important; /* Fuerza el margen izquierdo */
+    margin-right: auto !important; /* Fuerza el margen derecho */
+    padding: 0 20px; 
+    display: block; /* Asegura que se comporte como un bloque sólido */
+    width: 100%; /* Permite que el max-width trabaje correctamente */
+    box-sizing: border-box; /* Evita que el padding sume ancho extra */
+}
+
+.form-container p { 
+    margin-bottom: 30px; /* Crea el espacio con la caja de Razón Social */
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+form input, form textarea {
+    width: 100%; 
+    padding: 15px; 
+    margin-bottom: 15px; /* Espacio entre cajas */
+    border: 1px solid #ccc; 
+    background: #fff;
+    font-family: inherit;
+}
+
+/* --- CABECERA (IDÉNTICA AL HOME) --- */
+header {
+    background: var(--primary-blue); /* Azul oscuro oficial */
+    position: fixed;
+    width: 100%;
+    top: 0; 
+    z-index: 1100;
+    padding: 10px 0;
+    border-bottom: 3px solid var(--accent-red); /* Línea roja distintiva */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* La navbar ya hereda el centrado si está dentro de un contenedor o usa max-width */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo img { 
+    height: 60px; 
+}
+
+/* NAVEGACIÓN PRINCIPAL */
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    align-items: center;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 15px 12px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover, 
+.nav-links li a.active { 
+    color: var(--accent-yellow); /* Resalte amarillo igual al Home */
+}
+
+/* --- SUBMENÚ DESPLEGABLE (FONDO AZUL OSCURO) --- */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-blue); /* Fondo azul igual al header */
+    min-width: 220px;
+    z-index: 1200;
+    padding: 10px 0;
+    border-bottom: 3px solid var(--accent-red); /* Línea roja al final */
+}
+
+.dropdown-content li a {
+    color: var(--white) !important; /* Letras blancas */
+    padding: 12px 20px !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    display: block;
+    width: 100%;
+}
+
+.dropdown-content li a:hover {
+    color: var(--accent-yellow) !important;
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-links li.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* BOTÓN TELÉFONO ROJO */
+.btn-nav-phone {
+    background: var(--accent-red); /* Rojo sólido */
+    color: var(--white);
+    padding: 10px 18px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+/* --- SECCIÓN HERO CENTRADA --- */
+.page-header {
+    margin-top: 83px; /* Espacio para que el header fijo no tape el título */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('imagenes/fondocivil.webp') center/cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    text-align: center; /* Centra el texto del título */
+}
+
+.page-header h1 { 
+    width: 100%;
+    font-size: 3rem; 
+    text-transform: uppercase; 
+    font-weight: 700;
+}
+
+/* --- INFO BAR (ICONOS Y TEXTO) --- */
+.info-bar { 
+    background: #f4f4f4; 
+    padding: 40px 0; 
+    border-bottom: 1px solid #ddd; 
+}
+
+.grid-3 { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+}
+
+.info-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+}
+
+.info-item i { 
+    color: var(--accent-red); 
+    font-size: 1.5rem; 
+}
+
+/* --- FORMULARIO Y MAPA --- */
+.contact-main { 
+    padding: 80px 0; 
+}
+
+.contact-grid { 
+    display: grid; 
+    grid-template-columns: 1.2fr 0.8fr; 
+    gap: 50px; 
+}
+
+.underline { 
+    width: 50px; 
+    height: 4px; 
+    background: var(--accent-yellow); 
+    margin-bottom: 20px; 
+}
+
+/* CAMPOS DE TEXTO */
+form input, form textarea {
+    width: 100%; 
+    padding: 15px; 
+    margin-bottom: 15px;
+    border: 1px solid #ccc; 
+    background: #fff;
+}
+
+.input-row { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+}
+
+/* BOTÓN ENVIAR AMARILLO */
+.btn-send {
+    background: var(--accent-yellow);
+    color: var(--primary-blue);
+    border: none;
+    padding: 15px 50px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-send:hover { 
+    background: var(--primary-blue); 
+    color: var(--white); 
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+    .contact-grid, .grid-3 { 
+        grid-template-columns: 1fr; 
+    }
+    .nav-links { 
+        display: none; 
+    }
+}

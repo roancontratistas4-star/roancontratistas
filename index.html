@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROAN CONTRATISTAS | Potencia en Construcción</title>
+    <link rel="stylesheet" href="styleindex.css">
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="videos/videointro.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+    </video>
+
+    <div class="video-overlay"></div>
+    
+    <div class="ui-wrapper" id="ui-main">
+        <div class="top-bar">
+            <div class="sys-info">
+                <span class="status-blink">● STATUS: OPERATIONAL</span>
+                <span class="tech-id">PROJECT_REF: RCN-ALPHA-01</span>
+            </div>
+            <span id="clock">00:00:00</span>
+        </div>
+
+        <div class="main-frame">
+            <div class="logo-container">
+                <img src="imagenes/logoroan.png" alt="Logo ROAN" class="main-logo">
+            </div>
+            
+            <h1 class="company-title">ROAN CONTRATISTAS</h1>
+            <div class="tagline">CONSTRUYENDO EL FUTURO. HOY.</div>
+            <div class="separator"></div>
+        </div>
+
+        <div class="bottom-info">
+            <div class="terminal-box">
+                <p class="data-line">> INICIANDO SECUENCIA: [001] ANALIZANDO TERRENO</p>
+                <p class="data-line" style="animation-delay: 1s;">> PREPARANDO EQUIPO: [002] MAQUINARIA PESADA</p>
+                <p class="data-line" style="animation-delay: 2s;">> PROYECTO LISTO PARA DESPLIEGUE: [003] EJECUCIÓN</p>
+            </div>
+        </div>
+
+        <button class="enter-btn" onclick="systemEnter()">
+            <span class="btn-text">INICIAR CONSTRUCCIÓN</span>
+        </button>
+    </div>
+
+    <script src="scriptindex.js"></script>
+</body>
+</html>

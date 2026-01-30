@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subestación Buenos Aires | ROAN CONTRATISTAS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { 
+            --accent: #ffcc00; /* Amarillo de seguridad industrial */
+            --bg: #0a0a0b; 
+            --glass: rgba(255, 255, 255, 0.03); 
+            --power-blue: #007bff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Slider de Fondo */
+        .main-slider {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 12s linear;
+            filter: brightness(0.5) contrast(1.1);
+        }
+
+        .slide.active { opacity: 1; transform: scale(1.1); }
+
+        /* Estructura de Contenido */
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            align-items: end;
+            pointer-events: none;
+        }
+
+        .project-header { pointer-events: auto; }
+
+        .project-header h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 0.85;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .project-header h1 span {
+            display: block;
+            color: var(--accent);
+            filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.3));
+        }
+
+        /* Panel de Datos Técnicos */
+        .info-panel {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 40px;
+            border-radius: 30px;
+            pointer-events: auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .data-item { margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; }
+        .data-item:last-child { margin-bottom: 0; border: none; }
+
+        .data-item label {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .data-item p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        /* Controles */
+        .nav-controls {
+            position: fixed;
+            top: 50px; right: 60px;
+            display: flex; gap: 15px;
+            z-index: 100;
+            pointer-events: auto;
+        }
+
+        .nav-btn {
+            width: 50px; height: 50px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s;
+            color: #fff; text-decoration: none;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .nav-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+
+        .counter {
+            position: fixed;
+            bottom: 40px; left: 60px;
+            font-size: 6rem; font-weight: 900;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="nav-controls">
+        <div class="nav-btn" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></div>
+        <div class="nav-btn" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></div>
+        <a href="home.html" class="nav-btn"><i class="fas fa-times"></i></a>
+    </div>
+
+    <div class="main-slider">
+        <div class="slide active" style="background-image: url('imagenes/BROCHURE/BuenosAires/Imangen05.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/BuenosAires/Imangen04.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/BuenosAires/Imangen03.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/BuenosAires/Imangen06.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/BuenosAires/Imangen07.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/BuenosAires/Imangen09.png')"></div>
+    </div>
+
+    <div class="counter" id="number">01</div>
+
+    <main class="content-overlay">
+        <header class="project-header">
+            <h1>Subestación<br><span>Buenos Aires</span></h1>
+            <p style="opacity: 0.6; max-width: 500px; line-height: 1.6; font-size: 0.9rem;">
+                Mantenimiento y mejoramiento de infraestructura eléctrica especializada para asegurar la continuidad del servicio de energía.
+            </p>
+        </header>
+
+        <aside class="info-panel">
+            <div class="data-item">
+                <label><i class="fas fa-bolt"></i> Proyecto</label>
+                <p>Infraestructura Eléctrica - Hidrandina</p>
+            </div>
+            <div class="data-item">
+                <label><i class="fas fa-location-dot"></i> Ubicación</label>
+                <p>Buenos Aires, Trujillo - La Libertad</p>
+            </div>
+            <div class="data-item">
+                <label><i class="fas fa-id-badge"></i> Identificador Técnico</label>
+                <p>HI0057</p>
+            </div>
+            <div class="data-item">
+                <label><i class="fas fa-tools"></i> Estado de Ejecución</label>
+                <p>Obras Civiles y Electromecánicas en Curso</p>
+            </div>
+        </aside>
+    </main>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const numDisplay = document.getElementById('number');
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[index].classList.add('active');
+            numDisplay.innerText = (index + 1).toString().padStart(2, '0');
+        }
+
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }
+
+        function prevSlide() {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        }
+
+        setInterval(nextSlide, 8000);
+
+        document.addEventListener('keydown', (e) => {
+            if(e.key === "ArrowRight") nextSlide();
+            if(e.key === "ArrowLeft") prevSlide();
+        });
+    </script>
+</body>
+</html>

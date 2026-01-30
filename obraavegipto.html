@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Av. Egipto II Etapa | ROAN CONTRATISTAS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { 
+            --accent: #ff3e3e; /* Rojo vibrante para infraestructura vial */
+            --bg: #050505; 
+            --glass: rgba(255, 255, 255, 0.03); 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Slider de Fondo */
+        .main-slider {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 12s linear;
+            filter: brightness(0.4) contrast(1.1);
+        }
+
+        .slide.active { opacity: 1; transform: scale(1.1); }
+
+        /* Estructura de Contenido */
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            align-items: end;
+            pointer-events: none;
+        }
+
+        /* Título del Proyecto */
+        .project-header { pointer-events: auto; }
+
+        .project-header h1 {
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 0.85;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .project-header h1 span {
+            display: block;
+            color: var(--accent);
+            filter: drop-shadow(0 0 15px rgba(255, 62, 62, 0.3));
+        }
+
+        /* Panel de Datos Técnicos */
+        .info-panel {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 40px;
+            border-radius: 30px;
+            pointer-events: auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .data-item { margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; }
+        .data-item:last-child { margin-bottom: 0; border: none; }
+
+        .data-item label {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .data-item p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .monto-highlight {
+            font-size: 1.25rem !important;
+            font-weight: 700 !important;
+            color: #fff !important;
+            border-left: 3px solid var(--accent);
+            padding-left: 10px;
+        }
+
+        /* Controles de Navegación */
+        .nav-controls {
+            position: fixed;
+            top: 50px; right: 60px;
+            display: flex; gap: 15px;
+            z-index: 100;
+            pointer-events: auto;
+        }
+
+        .nav-btn {
+            width: 50px; height: 50px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s;
+            color: #fff; text-decoration: none;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .nav-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        .counter {
+            position: fixed;
+            bottom: 40px; left: 60px;
+            font-size: 6rem; font-weight: 900;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="nav-controls">
+        <div class="nav-btn" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></div>
+        <div class="nav-btn" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></div>
+        <a href="home.html" class="nav-btn"><i class="fas fa-times"></i></a>
+    </div>
+
+    <div class="main-slider">
+        <div class="slide active" style="background-image: url('imagenes/BROCHURE/Egipto/imagen03.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/Egipto/imagen02.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/Egipto/imagen05.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/Egipto/imagen08.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/Egipto/imagen10.png')"></div>
+    </div>
+
+    <div class="counter" id="number">01</div>
+
+    <main class="content-overlay">
+        <header class="project-header">
+            <h1>Avenida<br><span>Egipto</span></h1>
+            <p style="opacity: 0.5; max-width: 500px; line-height: 1.6; font-size: 0.9rem;">
+                Segunda etapa del mejoramiento de infraestructura vial, garantizando durabilidad y seguridad para el transporte en el distrito de La Esperanza.
+            </p>
+        </header>
+
+        <aside class="info-panel">
+            <div class="data-item">
+                <label><i class="fas fa-building"></i> Obra</label>
+                <p>Mejoramiento de la Infraestructura Vial de la Avenida Egipto // II Etapa.</p>
+            </div>
+            <div class="data-item">
+                <label><i class="fas fa-map-marker-alt"></i> Ubicación</label>
+                <p>Distrito de La Esperanza, Trujillo - La Libertad.</p>
+            </div>
+            <div class="data-item">
+                <label><i class="fas fa-barcode"></i> Código Único</label>
+                <p>N° 2193345</p>
+            </div>
+            <div class="data-item">
+                <label><i class="fas fa-file-invoice-dollar"></i> Monto de Inversión</label>
+                <p class="monto-highlight">S/ 1,418,399.69</p>
+            </div>
+        </aside>
+    </main>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const numDisplay = document.getElementById('number');
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[index].classList.add('active');
+            numDisplay.innerText = (index + 1).toString().padStart(2, '0');
+        }
+
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }
+
+        function prevSlide() {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        }
+
+        // Cambio automático lento
+        setInterval(nextSlide, 8000);
+
+        // Control por teclado
+        document.addEventListener('keydown', (e) => {
+            if(e.key === "ArrowRight") nextSlide();
+            if(e.key === "ArrowLeft") prevSlide();
+        });
+    </script>
+
+</body>
+</html>

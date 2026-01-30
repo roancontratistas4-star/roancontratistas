@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plazuela Iquitos | ROAN CONTRATISTAS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { 
+            --accent: #3498db; /* Azul técnico para ingeniería eléctrica */
+            --bg: #0a0c10; 
+            --glass: rgba(255, 255, 255, 0.03); 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Slider de Fondo */
+        .main-slider {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 12s linear;
+            filter: brightness(0.4) contrast(1.2);
+        }
+
+        .slide.active { opacity: 1; transform: scale(1.1); }
+
+        /* Contenido */
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            align-items: end;
+            pointer-events: none;
+        }
+
+        .project-header { pointer-events: auto; }
+
+        .project-header h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 0.85;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .project-header h1 span {
+            display: block;
+            color: var(--accent);
+            filter: drop-shadow(0 0 15px rgba(52, 152, 219, 0.4));
+        }
+
+        /* Info Panel */
+        .info-panel {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 40px;
+            border-radius: 30px;
+            pointer-events: auto;
+        }
+
+        .data-item { margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; }
+        .data-item:last-child { border: none; }
+
+        .data-item label {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .data-item p { font-size: 0.95rem; font-weight: 300; line-height: 1.4; }
+
+        /* Nav */
+        .nav-controls {
+            position: fixed;
+            top: 50px; right: 60px;
+            display: flex; gap: 15px;
+            z-index: 100;
+            pointer-events: auto;
+        }
+
+        .nav-btn {
+            width: 50px; height: 50px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s;
+            color: #fff; text-decoration: none;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .nav-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    </style>
+</head>
+<body>
+
+    <div class="nav-controls">
+        <div class="nav-btn" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></div>
+        <div class="nav-btn" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></div>
+        <a href="home.html" class="nav-btn"><i class="fas fa-times"></i></a>
+    </div>
+
+    <div class="main-slider">
+        <div class="slide active" style="background-image: url('imagenes/BROCHURE/trujillo_plazuela_iquitos/imagen02.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/trujillo_plazuela_iquitos/imagen03.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/trujillo_plazuela_iquitos/imagen04.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/trujillo_plazuela_iquitos/imagen05.png')"></div>
+        <div class="slide" style="background-image: url('imagenes/BROCHURE/trujillo_plazuela_iquitos/imagen06.png')"></div>
+    </div>
+
+    <main class="content-overlay">
+        <header class="project-header">
+            <h1>Plazuela<br><span>Iquitos</span></h1>
+            <p style="opacity: 0.6; max-width: 500px; line-height: 1.6;">
+                Servicios especializados de ingeniería eléctrica: Desmontaje de subestaciones y adecuación de redes para infraestructura urbana.
+            </p>
+        </header>
+
+        <aside class="info-panel">
+            <div class="data-item">
+                <label><i class="fas fa-bolt"></i> Cliente</label>
+                <p>Sra. Cecilia Manucci</p>
+            </div>
+            <div class="data-item">
+                <label><i class="fas fa-tools"></i> Especialidad</label>
+                <p>Ingeniería Eléctrica y Electromecánica</p>
+            </div>
+            <div class="data-item">
+                <label><i class="fas fa-map-marker-alt"></i> Ubicación</label>
+                <p>Plazuela Iquitos - Trujillo</p>
+            </div>
+            <div class="data-item">
+                <label><i class="fas fa-cogs"></i> Trabajos</label>
+                <p>Desmontaje de subestación, excavación y pruebas de red.</p>
+            </div>
+        </aside>
+    </main>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+        function nextSlide() { current = (current + 1) % slides.length; showSlide(current); }
+        function prevSlide() { current = (current - 1 + slides.length) % slides.length; showSlide(current); }
+        setInterval(nextSlide, 7000);
+    </script>
+</body>
+</html>
